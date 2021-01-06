@@ -1,3 +1,5 @@
+DECLARE SUB SaveScreen (filename AS STRING, w AS INTEGER, h AS INTEGER)
+
 SCREEN 13
 CLS
 
