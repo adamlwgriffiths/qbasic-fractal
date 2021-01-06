@@ -31,7 +31,7 @@ FOR py = 0 TO h - 1
                 y = 0
                 PSET (px, py), 1
                 WHILE (x ^ 2 + y ^ 2 < 4) AND (i < maxi)
-                        xt = x ^ 2 - y ^ 2 + sx
+                        xt = x * x - y * y + sx
                         y = 2 * x * y + sy
                         x = xt
                         i = i + 1
@@ -40,3 +40,15 @@ FOR py = 0 TO h - 1
                 PSET (px, py), c
         NEXT
 NEXT
+
+CALL SaveScreen("mandelbr.raw", 320, 200)
+
+SUB SaveScreen (filename AS STRING, w AS INTEGER, h AS INTEGER)
+    OPEN filename FOR OUTPUT AS #1
+        FOR y = 0 TO h - 1
+            FOR x = 0 TO w - 1
+                PRINT #1, CHR$(POINT(x, y));
+            NEXT x
+        NEXT y
+    CLOSE #1
+SUB END
