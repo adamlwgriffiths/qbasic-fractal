@@ -32,7 +32,7 @@ FOR py = 0 TO h - 1
                 x = 0
                 y = 0
                 PSET (px, py), 1
-                WHILE (x ^ 2 + y ^ 2 < 4) AND (i < maxi)
+                WHILE (x * x + y * y < 4) AND (i < maxi)
                         xt = x * x - y * y + sx
                         y = 2 * x * y + sy
                         x = xt
