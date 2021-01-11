@@ -1,6 +1,7 @@
 QBasic code to render a Mandelbrot set.
 
-![Output](output.png)
+![Output](images/basic.png)
+![Palette Scroll](images/palette-scroll.gif)
 
 Improvements
 ------------
