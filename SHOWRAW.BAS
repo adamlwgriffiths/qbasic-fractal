@@ -1,5 +1,7 @@
+DECLARE FUNCTION PaletteColour! (red AS LONG, green AS LONG, blue AS LONG)
 DECLARE SUB LoadRawScreen (filename AS STRING, w AS INTEGER, h AS INTEGER)
 DECLARE SUB CyclePalette ()
+
 SCREEN 13
 CLS
 LINE (0, 0)-(320, 200), 15, BF
@@ -20,25 +22,25 @@ SUB CyclePalette
                 blue = i
                 green = i / 2
                 red = i / 3
-                pcolour = blue * 65536 + green * 256 + red
+                pcolour = PaletteColour(red, blue, green)
                 pvalues1(i) = pcolour
                 pvalues1(i + 128) = pcolour
                 blue = i / 2
                 green = i / 3
                 red = i
-                pcolour = blue * 65536 + green * 256 + red
+                pcolour = PaletteColour(red, blue, green)
                 pvalues2(i) = pcolour
                 pvalues2(i + 128) = pcolour
                 blue = i / 3
                 green = i
                 red = i / 2
-                pcolour = blue * 65536 + green * 256 + red
+                pcolour = PaletteColour(red, blue, green)
                 pvalues3(i) = pcolour
                 pvalues3(i + 128) = pcolour
                 blue = i
                 green = i
                 red = i
-                pcolour = blue * 65536 + green * 256 + red
+                pcolour = PaletteColour(red, blue, green)
                 pvalues4(i) = pcolour
                 pvalues4(i + 128) = pcolour
         NEXT i
@@ -46,25 +48,25 @@ SUB CyclePalette
                 blue = i
                 green = i / 2
                 red = i / 3
-                pcolour = blue * 65536 + green * 256 + red
+                pcolour = PaletteColour(red, blue, green)
                 pvalues1(i + 64) = pcolour
                 pvalues1(i + 192) = pcolour
                 blue = i / 2
                 green = i / 3
                 red = i
-                pcolour = blue * 65536 + green * 256 + red
+                pcolour = PaletteColour(red, blue, green)
                 pvalues2(i + 64) = pcolour
                 pvalues2(i + 192) = pcolour
                 blue = i / 3
                 green = i
                 red = i / 2
-                pcolour = blue * 65536 + green * 256 + red
+                pcolour = PaletteColour(red, blue, green)
                 pvalues3(i + 64) = pcolour
                 pvalues3(i + 192) = pcolour
                 blue = i
                 green = i
                 red = i
-                pcolour = blue * 65536 + green * 256 + red
+                pcolour = PaletteColour(red, blue, green)
                 pvalues4(i + 64) = pcolour
                 pvalues4(i + 192) = pcolour
        
@@ -111,4 +113,8 @@ SUB LoadRawScreen (filename AS STRING, w AS INTEGER, h AS INTEGER)
         CLOSE #1
 
 END SUB
+
+FUNCTION PaletteColour (red AS LONG, green AS LONG, blue AS LONG)
+        PaletteColour = blue * 65536 + green * 256 + red
+END FUNCTION
 
