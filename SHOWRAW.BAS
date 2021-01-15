@@ -83,9 +83,9 @@ SUB CyclePalette
                 END IF
 
                 index = index + 1
-                FOR i = 0 TO 10000
-                NEXT i
-
+                REM FOR i = 0 TO 10000
+                REM NEXT i
+               
                 IF index > 3 THEN index = 0
         LOOP
 END SUB
@@ -112,5 +112,4 @@ SUB LoadRawScreen (filename AS STRING, w AS INTEGER, h AS INTEGER)
         CLOSE #1
 
 END SUB
-
 
