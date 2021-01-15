@@ -1,4 +1,3 @@
-DECLARE SUB CyclePalette ()
 DECLARE SUB SaveScreen (filename AS STRING, w AS INTEGER, h AS INTEGER)
 DECLARE SUB InitPalette ()
 
@@ -48,80 +47,6 @@ NEXT
 
 CALL SaveScreen("C:\SCREEN.RAW", 320, 200)
 REM CALL CyclePalette
-
-SUB CyclePalette
-        DIM blue AS LONG
-        DIM green AS LONG
-        DIM red AS LONG
-        DIM pcolour AS LONG
-        DIM pvalues1(255) AS LONG
-        DIM pvalues2(255) AS LONG
-        DIM pvalues3(255) AS LONG
-        DIM pvalues4(255) AS LONG
-        FOR i = 0 TO 63
-                blue = i
-                green = i / 2
-                red = i / 3
-                pcolour = blue * 65536 + green * 256 + red
-                pvalues1(i) = pcolour
-                pvalues1(i + 128) = pcolour
-                blue = i / 2
-                green = i / 3
-                red = i
-                pvalues2(i) = pcolour
-                pvalues2(i + 128) = pcolour
-                blue = i / 3
-                green = i
-                red = i / 2
-                pvalues3(i) = pcolour
-                pvalues3(i + 128) = pcolour
-                blue = i
-                green = i
-                red = i
-                pvalues4(i) = pcolour
-                pvalues4(i + 128) = pcolour
-        NEXT i
-        FOR i = 63 TO 0 STEP -1
-                blue = i
-                green = i / 2
-                red = i / 3
-                pcolour = blue * 65536 + green * 256 + red
-                pvalues1(i + 64) = pcolour
-                pvalues1(i + 192) = pcolour
-                blue = i / 2
-                green = i / 3
-                red = i
-                pvalues2(i + 64) = pcolour
-                pvalues2(i + 192) = pcolour
-                blue = i / 3
-                green = i
-                red = i / 2
-                pvalues3(i + 64) = pcolour
-                pvalues3(i + 192) = pcolour
-                blue = i
-                green = i
-                red = i
-                pvalues4(i + 64) = pcolour
-                pvalues4(i + 192) = pcolour
-       
-        NEXT i
-
-        index = 0
-        DO WHILE INKEY$ = ""
-                IF index = 0 THEN
-                        PALETTE USING pvalues1
-                ELSEIF index = 1 THEN
-                        PALETTE USING pvalues2
-                ELSEIF index = 2 THEN
-                        PALETTE USING pvalues3
-                ELSE
-                        PALETTE USING pvalues4
-                END IF
-
-                index = index + 1
-                IF index > 3 THEN index = 0
-        LOOP
-END SUB
 
 SUB InitPalette
         DIM blue AS LONG
