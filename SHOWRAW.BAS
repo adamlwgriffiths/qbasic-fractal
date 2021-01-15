@@ -83,9 +83,8 @@ SUB CyclePalette
                 END IF
 
                 index = index + 1
-                REM FOR i = 0 TO 10000
-                REM NEXT i
-               
+                SLEEP 1
+
                 IF index > 3 THEN index = 0
         LOOP
 END SUB
