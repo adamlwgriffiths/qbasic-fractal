@@ -5,6 +5,7 @@ SCREEN 13
 CLS
 LINE (0, 0)-(320, 200), 15, BF
 
+REM Initialise a nicer palette so the fractal doesnt look weird
 CALL InitPalette
 
 CONST w = 320
@@ -22,6 +23,7 @@ DIM SHARED r AS INTEGER
 DIM SHARED g AS INTEGER
 DIM SHARED B AS INTEGER
 
+REM This is fractal rendering code, the other functions are to make it look nicer
 FOR py = 0 TO h - 1
         REM scale Y to -1:+1
         sy = (py / h) * 2! - 1
@@ -48,6 +50,7 @@ NEXT
 CALL SaveScreen("C:\SCREEN.RAW", 320, 200)
 REM CALL CyclePalette
 
+REM Change the default colours
 SUB InitPalette
         DIM blue AS LONG
         DIM green AS LONG
@@ -73,18 +76,13 @@ SUB InitPalette
 END SUB
 
 SUB SaveScreen (filename AS STRING, w AS INTEGER, h AS INTEGER)
-       
         OPEN filename FOR OUTPUT AS #1
-       
         FOR y = 0 TO h - 1
-                
                 FOR x = 0 TO w - 1
                         PRINT #1, CHR$(POINT(x, y));
                 NEXT x
-                
         NEXT y
 
         CLOSE #1
-
 END SUB
 
